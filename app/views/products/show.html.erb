@@ -1,0 +1,20 @@
+<h1> See Product here </h1>
+
+<div class = "container">
+<div>
+Product name: <%= @product.name  %>
+</div>
+<div>
+Product Price: <%= @product.price  %>
+</div>
+<div>
+Product Description: <%= @product.description  %>
+</div>
+</div>
+
+
+<div class = "container">
+<%= link_to "Delete Product", "/products/#{@product.id}", method: :delete %>
+
+
+</div>
