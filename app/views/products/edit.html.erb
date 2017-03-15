@@ -1,22 +1,19 @@
 <h1> Edit Recipe </h1>
 
 <%= form_tag "/products/#{@product.id}", method: :patch do %>
-
-	<div>
-	Enter name: <input type= "text" name="name" value="<%= @product.name %>">
+	<div class="form-group">
+		<label for="InputName">Enter Name</label>
+		<input type="text" class="form-control" name = "name" id="InputName" value="<%= @product.name %>"/>
 	</div>
-	<div>
-	Enter price: <input type= "text" name="price" value="<%= @product.price %>">
+	<div class="form-group">
+		<label for="InputPrice">Enter Price</label>
+		<input type="text" class="form-control" name = "price" id="InputPrice" value="<%= @product.price %>"/>
 	</div>
-	<div>
-	Enter description <input type= "text" name="description" value="<%= @product.description %>">
+	<div class="form-group">
+		<label for="InputDescription">Enter Description</label>
+		<textarea type="text" class="form-control" name= "description" rows="3" id="InputDescription" placeholder="<%= @product.description %>"></textarea>
 	</div>
-	<div>
-	<input type="submit" value="Update product">
-	</div>
-
-
-
-
+		
+	<input class="btn btn-default" type="submit" value="Update Product">
 
 <% end %>

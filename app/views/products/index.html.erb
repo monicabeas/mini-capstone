@@ -1,13 +1,18 @@
 <h1> Products </h1>
 
+<% @products.each_slice(3) do |three_products| %>
 
-<% @products.each do |product| %>
-	<div>
-	<a href="http://localhost:3000/products/<%=product.id%>">
-	<%= product.name %>
-		</a>
-	<%= product.price %>
-	<%= product.description %>
+	<div class="row">
+		<% three_products.each do |product| %>
+			<div class = "col-md-4">
+				<div class ="well">
+					<a href="http://localhost:3000/products/<%=product.id%>">
+					<h3><%= product.name %></h3>
+						</a>
+					<h4>$<%= product.price %> <h4>
+					<p><%= product.description %><p>
+				</div>
+			</div>
+		<%end%>
 	</div>
-
-<%end%>
+<% end %>

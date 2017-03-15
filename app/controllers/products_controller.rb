@@ -22,6 +22,8 @@ class ProductsController < ApplicationController
 
 		@product = Product.create(name: input_name, price: input_price, description: input_description)
 
+		flash[:success] = "Product created!"
+		redirect_to "/products/#{@product.id}"
 	end 
 		
 	def edit 
@@ -40,6 +42,7 @@ class ProductsController < ApplicationController
 		@product.description = input_description
 		@product.save 
 
+		flash[:info] = "Product updated successfully!"
 		redirect_to "/products/#{@product.id}"
 	end 
 
@@ -48,6 +51,7 @@ class ProductsController < ApplicationController
 		@product = Product.find_by(id: product_id)
 		@product.destroy
 
+		flash[:danger] = "Product destroyed!"
 		redirect_to "/products"
 
 	end 

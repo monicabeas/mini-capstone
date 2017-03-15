@@ -2,8 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h1 {
+	text-align: center;
+}
 
 .form-group {
 
-	width: 75%
+	width: 75%;
+}
+
+.center {
+  top: 0;
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  margin: auto;  
+}
+
+.btn-center {
+  top: 0;
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  margin: auto;  
+}
+body {
+	font-family: 'Raleway', sans-serif;
+	background-image: url('cork-wallet.png');
 }
