@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 
 	def sale_method 
-		if price.to_i < 2
+		if price < 2
 			p "Discount Item!"
 		else 
 			p "Everyday Value!!"
@@ -9,10 +9,10 @@ class Product < ApplicationRecord
 	end
 
 	def tax 
-		price.to_i * 0.1
+		price * 0.1
 	end 
 
 	def total 
-		price.to_i + tax
+		price + tax
 	end  
 end
