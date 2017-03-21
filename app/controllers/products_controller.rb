@@ -1,15 +1,38 @@
 class ProductsController < ApplicationController
 
 	def index 
-		@products = Product.all 
+		sort = params[:sort]
+		sort_order = params[:sort_order]
+		discount = params[:discount]
+
+		if discount
+			@products = Product.where("price < ?", 50)
+		elsif sort && sort_order
+			@products = Product.all.order(sort => sort_order)
+		else 
+			@products = Product.all 
+		end 
 
 		render 'index.html.erb'	
 	end 
 
 	def show 
-		product_id = params[:id]
-		@product = Product.find_by(id: product_id)
 
+		if params[:id] =="random"
+			# Select random recipe from the database
+			products = Product.all 
+			@product = products.sample 
+		else 
+			product_id = params[:id]
+			@product = Product.find_by(id: product_id)
+		end 
+
+	end 
+
+	def search 
+		search_term = params[:search_term]
+		@products = Product.where("name ILIKE ?", "%#{search_term}%")
+		render :index
 	end 
 
 	def new 
@@ -18,6 +41,7 @@ class ProductsController < ApplicationController
 	def create 
 		input_name = params[:name]
 		input_price = params[:price]
+		input_image = 
 		input_description = params[:description]
 
 		@product = Product.create(name: input_name, price: input_price, description: input_description)

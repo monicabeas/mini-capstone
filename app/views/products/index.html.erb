@@ -1,5 +1,19 @@
 <h1> Products </h1>
 
+<!-- Single button -->
+<div class="btn-group ">
+  <button type="button" class="btn btn-default btn-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Sort By <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="/products?sort=price&sort_order=asc">Sort by Price (Lowest-Highest)</a></li>
+    <li><a href="/products?sort=price&sort_order=desc">Sort by Price (Highest-Lowest)</a></li>
+  </ul>
+</div>
+
+
+
+
 <% @products.each_slice(3) do |three_products| %>
 
 	<div class="row">

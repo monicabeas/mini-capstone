@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
 
 	def sale_method 
-		if price < 2
+		if price < 50
 			p "Discount Item!"
 		else 
 			p "Everyday Value!!"

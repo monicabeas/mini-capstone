@@ -1,0 +1,22 @@
+<h1> Show Supplier </h1>
+
+<h3>
+	Supplier name: <%= @supplier.name  %>
+</h3>
+<h4>
+	Email: <%= @supplier.email  %>
+</h4>
+<p>
+	Phone Number: <%= @supplier.phone_number  %>
+</p>
+
+<div>
+	<%= link_to "Update Supplier", "/suppliers/#{@supplier.id}/edit" %>
+</div>
+<div>
+	<%= link_to "Delete Supplier", "/suppliers/#{@supplier.id}", method: :delete %>
+</div>
+
+<div>
+	<%= link_to "View All Suppliers", "/suppliers" %>
+</div>
