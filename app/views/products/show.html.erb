@@ -1,14 +1,14 @@
 
 <h1> See Product here </h1>
-<h3>
-	Product name: <%= @product.name  %>
-</h3>
-<h4>
-	Product Price: $<%= @product.price  %>
-</h4>
-<p>
-	Product Description: <%= @product.description  %>
-</p>
+<h3> Product name: <%= @product.name  %> </h3>
+
+<h4> Product supplier: <%= @product.supplier.name %> </h4>
+
+<% @product.images.each do |image| %>
+	<img class="index_product_image" src="<%= image.image %>">
+<% end %>	
+<h4> Product Price: $<%= @product.price  %> </h4>
+<p> Product Description: <%= @product.description  %> </p>
 	
 <%= @product.sale_method %>
 

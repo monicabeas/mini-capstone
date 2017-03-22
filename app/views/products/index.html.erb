@@ -1,14 +1,18 @@
 <h1> Products </h1>
 
 <!-- Single button -->
-<div class="btn-group ">
-  <button type="button" class="btn btn-default btn-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Sort By <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="/products?sort=price&sort_order=asc">Sort by Price (Lowest-Highest)</a></li>
-    <li><a href="/products?sort=price&sort_order=desc">Sort by Price (Highest-Lowest)</a></li>
-  </ul>
+<div class = "row">
+	<div class = "col-md-10">
+		<div class="btn-group ">
+		  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Sort By <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu">
+		    <li><a href="/products?sort=price&sort_order=asc">Sort by Price (Lowest-Highest)</a></li>
+		    <li><a href="/products?sort=price&sort_order=desc">Sort by Price (Highest-Lowest)</a></li>
+		  </ul>
+		</div>
+	</div>
 </div>
 
 
@@ -23,6 +27,9 @@
 					<a href="http://localhost:3000/products/<%=product.id%>">
 					<h3><%= product.name %></h3>
 						</a>
+						<% product.images.limit(1).each do |image| %>
+							<img class="index_product_image" src="<%= image.image %>">
+						<% end %>		
 					<h4>$<%= product.price %> <h4>
 					<p><%= product.description %><p>
 				</div>
