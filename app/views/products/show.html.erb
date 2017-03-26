@@ -3,6 +3,7 @@
 <h3> Product name: <%= @product.name  %> </h3>
 
 <h4> Product supplier: <%= @product.supplier.name %> </h4>
+<h4> Products in Stock: <%= @product.stock %> </h4>
 
 <% @product.images.each do |image| %>
 	<img class="index_product_image" src="<%= image.image %>">
@@ -14,6 +15,12 @@
 
 <h5>Tax: $ <%= @product.tax %></h5>
 <h4>Total Price: $<%= @product.total %></h4>
+
+<%= form_tag "/orders", method: :post do %> 
+Quantity: <input type= "text" name="input_quantity">
+<input type= "hidden" value = "<%= @product.id %>" name="input_product_id">
+<input  type= "submit" value="Buy Now!">
+<% end %> 
 
 <div>
 	<%= link_to "Update Product", "/products/#{@product.id}/edit" %>

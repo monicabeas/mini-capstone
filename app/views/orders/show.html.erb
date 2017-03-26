@@ -1,0 +1,12 @@
+<h1> Order Confirmed! </h1>
+
+Confirmation email was sent to: <%= @user.email %>
+Thank you for ordering: <%= @product.name %>
+<img src="<%= @product.images.first.image %>" >
+Your order id is : <%= @order.id %> 
+The quantity is: <%= @order.quantity %>
+Subtotal: <%= @order.subtotal %> 
+Tax: <%= @order.tax %> 
+Total: <%= @order.total %> 
+
+

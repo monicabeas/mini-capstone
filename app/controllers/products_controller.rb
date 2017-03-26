@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
 
+	before_action :authenticate_user!
+
 	def index 
 		sort = params[:sort]
 		sort_order = params[:sort_order]

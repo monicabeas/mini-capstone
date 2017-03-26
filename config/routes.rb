@@ -59,6 +59,13 @@ post "/login" => "sessions#create"
 #Log out 
 get "/logout" => "sessions#destroy"
 
+#Create order 
+post "/orders" => "orders#create"
+
+#Show Order 
+get "orders/:id" => "orders#show"
+
+
 
 
 
