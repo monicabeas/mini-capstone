@@ -1,0 +1,28 @@
+<% if current_user %> 
+
+	<div>
+	<h1> Carted Products </h1>
+	</div>
+
+	<% @carted_products.each_slice(3) do |three_products| %>
+
+		<div class = "row "> 
+			<% three_products.each do |carted_product| %>
+				<% if carted_product.status == "carted" %> 
+					<div class="col-md-4">
+						<div class = "well" >
+						 		Product Name: <%= carted_product.product.name %>
+						 		<br /> 
+						 		Quantity: <%= carted_product.quantity %> 
+						 		<br />
+						 		<%= link_to "Delete Product", "/carted_products/#{carted_product.id}", method: :delete %>		
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>
+<%= form_tag "/orders", method: :post do %> 
+<input  type= "submit" value="Buy Now!">
+<% end %> 

@@ -26,12 +26,20 @@
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		    	<ul class="nav navbar-nav">				 		
+		    	<ul class="nav navbar-nav">
+			    	<li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+			          <% categories.each do |category| %>
+			            <li><a href="/products?category_id=<%= category.id %>"><%= category.name.capitalize %></a></li>
+			          <% end %>
+		          </ul>
+	        	</li>				 		
 		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
 			      <%= form_tag "/search", method: :post, class: "navbar-form navbar-left" do %>
 	 						<div class="form-group">
-	              <input type="text" class="form-control" placeholder="Search for Recipes" name="search_term">
+	              <input type="text" class="form-control" placeholder="Search for Products" name="search_term">
 	            </div>
 	             <button type="submit" class="btn btn-default">Search</button>
 	          <% end %>
@@ -40,6 +48,8 @@
 
 		        <li><a href="/products/new">Submit Product</a></li>
 
+		        <li><a href="/carted_products">Shopping Cart</a></li>
+		       
 
 		        <% if current_user %>
 		        	<li><a href="/logout">Logout</a></li>

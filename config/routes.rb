@@ -63,7 +63,17 @@ get "/logout" => "sessions#destroy"
 post "/orders" => "orders#create"
 
 #Show Order 
-get "orders/:id" => "orders#show"
+get "/orders/:id" => "orders#show"
+
+#Index Carted Products 
+get "/carted_products" => "carted_products#index"
+#Create Carted Products 
+post "/carted_products" => "carted_products#create"
+
+#Delete Carted Product 
+delete "carted_products/:id" => "carted_products#destroy"
+
+
 
 
 

@@ -15,6 +15,14 @@ class ProductsController < ApplicationController
 			@products = Product.all 
 		end 
 
+		category_id = params[:category_id]
+		if category_id
+			@category = Category.find_by(id: category_id)
+			@products = @category.products
+		else
+			@products = Product.all 
+		end 
+
 		render 'index.html.erb'	
 	end 
 
@@ -27,8 +35,8 @@ class ProductsController < ApplicationController
 		else 
 			product_id = params[:id]
 			@product = Product.find_by(id: product_id)
+			@categories = @product.categories
 		end 
-
 	end 
 
 	def search 

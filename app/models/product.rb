@@ -1,15 +1,18 @@
 class Product < ApplicationRecord
 	belongs_to :supplier
-	has_many :orders 
 	#def supplier 
 		#Supplier.find_by(id: supplier_id)
 	#end 
 
 	has_many :images
+	has_many :categories, through: :categorized_products
+	has_many :categorized_products
+	has_many :carted_products 
+	has_many :orders, through: :carted_products
 
 	def sale_method 
 		if price < 50
-			p "Discount Item!"
+			p "Discounted Item!"
 		else 
 			p "Everyday Value!!"
 		end 
