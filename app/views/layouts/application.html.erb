@@ -45,8 +45,9 @@
 	          <% end %>
 
 		      	<li><a href="/products?discount=price">Discounted Items</a></li>  
-
-		        <li><a href="/products/new">Submit Product</a></li>
+		      	<% if current_user && current_user.admin %>
+		        	<li><a href="/products/new">Submit Product</a></li>
+		        <% end %>	
 
 		        <li><a href="/carted_products">Shopping Cart</a></li>
 		       
@@ -64,15 +65,15 @@
 
 
 
-  	<% flash.each do |name, message| %>
-  		<div class="alert alert-<%= name %> alert-dismissible"  role="alert">
-  			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  			<%= message %> 
+  		<% flash.each do |name, message| %>
+  			<div class="alert alert-<%= name %> alert-dismissible"  role="alert">
+  				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  				<%= message %> 
 			</div>
 		<% end %>
 
 		<div class= "container">
-    	<%= yield %>
+    		<%= yield %>
   	</div>
 	</body>
 

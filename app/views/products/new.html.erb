@@ -1,21 +1,30 @@
 <h1> Enter product </h1>
 
+<div class="form-group center"> 
+<ul> 
+	<% @product.errors.full_messages.each do |error| %>
+	<li><%= error %></li>
+	<% end %> 
+</ul>
+</div>
+
+
 <%= form_tag "/products", method: :post do %>
 	<div class="form-group center">
 		<label for="InputName">Enter Name</label>
-		<input type="text" class="form-control" name = "name" id="InputName" placeholder="Name">
+		<input type="text" class="form-control" name = "name" id="InputName" value="<%= @product.name %>">
 	</div>
 	<div class="form-group center">
 		<label for="InputPrice">Enter Price</label>
-		<input type="text" class="form-control" name = "price" id="InputPrice" placeholder="Price">
+		<input type="text" class="form-control" name = "price" id="InputPrice" value="<%= @product.price %>">
 	</div>
 	<div class="form-group center">
-		<label for="InputPicture">Insert Image</label>
-		<input type="text" class="form-control" name = "image" id="InputPicture" placeholder="Insert Image">
+		<label for="InputStock">Stock</label>
+		<input type="text" class="form-control" name = "stock" id="InputStock" value="<%= @product.stock %>">
 	</div>
 	<div class="form-group center">
 		<label for="InputDescription">Enter Description</label>
-		<textarea type="text" class="form-control" name= "description" rows="3" id="InputDescription" placeholder="Description"></textarea>
+		<textarea type="text" class="form-control" name= "description" rows="3" id="InputDescription" value="<%= @product.description %>"></textarea>
 	</div>
 	<div class="my-form-button form-group center">
 		<input class="btn btn-default center" type="submit" value="Submit Product">

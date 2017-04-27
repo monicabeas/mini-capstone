@@ -27,12 +27,14 @@ Quantity: <input type= "text" name="input_quantity">
 <input  type= "submit" value="Add to Cart">
 <% end %> 
 
-<div>
-	<%= link_to "Update Product", "/products/#{@product.id}/edit" %>
-</div>
-<div>
-	<%= link_to "Delete Product", "/products/#{@product.id}", method: :delete %>
-</div>
+<% if current_user && current_user.admin %> 
+	<div>
+		<%= link_to "Update Product", "/products/#{@product.id}/edit" %>
+	</div>
+	<div>
+		<%= link_to "Delete Product", "/products/#{@product.id}", method: :delete %>
+	</div>
+<% end %>
 <div>
 	<%= link_to "View All Products", "/products" %>
 </div>

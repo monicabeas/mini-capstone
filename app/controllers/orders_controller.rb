@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+	before_action :authenticate_user!
 
 	def create
 		
@@ -32,6 +33,7 @@ class OrdersController < ApplicationController
 	def show 
 		@user = User.find_by(id: session[:user_id])
 		@order = Order.find_by(id: params[:id])
+		@order.carted_products 
 
 
 	end 

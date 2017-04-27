@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
-	before_action :authenticate_user!
+	before_action :authenticate_user!, except: [:index, :show, :search]
+	before_action :authenticate_admin!, except: [:index, :show, :search]
 
 	def index 
 		sort = params[:sort]
@@ -46,18 +47,25 @@ class ProductsController < ApplicationController
 	end 
 
 	def new 
+		@product = Product.new
 	end 
 
 	def create 
 		input_name = params[:name]
 		input_price = params[:price]
-		input_image = 
 		input_description = params[:description]
+		input_stock = params[:stock]
 
-		@product = Product.create(name: input_name, price: input_price, description: input_description)
+		@product = Product.new(name: input_name, price: input_price, description: input_description, 
+			stock: input_stock)
 
-		flash[:success] = "Product created!"
-		redirect_to "/products/#{@product.id}"
+		if @product.save
+			flash[:success] = "Product created!"
+			redirect_to "/products/#{@product.id}"
+		else 
+			flash[:danger] ="Product could not be created!"
+			render "new.html.erb"
+		end 
 	end 
 		
 	def edit 
